@@ -5,7 +5,7 @@ The construction of a real estate price prediction project is explained in detai
 
 Nearly all data science principles, including data loading and cleaning, outlier identification and removal, feature engineering, dimensionality reduction, gridsearchcv for hyperparameter tuning, k fold cross validation, etc., were covered in the process of developing this model. 
 
-A pickle file and a json file are also created along with the model in order enable other software developers to put the model on a website where people may freely access it and make predictions in an interactive way.
+A pickle file and a json file are also created along with the model in order enable other software developers to host the model on a website where people may freely access it and make predictions in an interactive way.
 
 
 
