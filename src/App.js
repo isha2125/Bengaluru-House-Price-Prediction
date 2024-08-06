@@ -22,7 +22,7 @@ function App() {
 
   const fetchLocations = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/get_location_names');
+      const response = await axios.get('https://bengaluru-house-price-prediction-qouw.onrender.com/get_location_names');
       setLocations(response.data.locations);
     } catch (error) {
       console.error('Error fetching locations:', error);
@@ -38,7 +38,7 @@ function App() {
     e.preventDefault();
     setError(null);
     try {
-      const response = await axios.post('http://localhost:5000/predict_home_price', formData);
+      const response = await axios.post('https://bengaluru-house-price-prediction-qouw.onrender.com/predict_home_price', formData);
       setPrediction(response.data.estimated_price);
       setShowPrediction(true);
     } catch (error) {
