@@ -1,26 +1,70 @@
+# Getting Started with Create React App
 
-# Bengaluru House Price Prediction Project
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The construction of a real estate price prediction project is explained in detail in this series of data science projects. Firstly, I created a model using the Bengaluru Home Prices dataset from [kaggle](www.kaggle.com) and performed certain processes using linear regression to train the model to make appropriate predictions.
+## Available Scripts
 
-Nearly all data science principles, including data loading and cleaning, outlier identification and removal, feature engineering, dimensionality reduction, gridsearchcv for hyperparameter tuning, k fold cross validation, etc., were covered in the process of developing this model. 
+In the project directory, you can run:
 
-A pickle file and a json file are also created along with the model in order enable other software developers to host the model on a website where people may freely access it and make predictions in an interactive way.
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
+### `npm test`
 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-## Technology Used
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-**1.** Python
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-**2.** Numpy and Pandas for data cleaning
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-**3.** Matplotlib for data visualization
+### `npm run eject`
 
-**4.** Sklearn for model building
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-**5.** Jupyter notebook, visual studio code and pycharm as IDE
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
