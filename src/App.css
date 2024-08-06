@@ -1,3 +1,25 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
@@ -19,32 +41,23 @@
   align-items: flex-start;
   margin: 20px;
   flex: 1;
-  overflow: auto;
 }
 
 .carousel-container {
-  width: 40%;  /* Fixed width for carousel container */
-  max-width: 400px;  /* Optional: Max width for better responsiveness */
-  height: 600px;  /* Fixed height for carousel */
+  width: 40%;
+  max-width: 400px;
   margin-right: 20px;
-  overflow: hidden;  /* Hide overflow to ensure images fit properly */
 }
 
 .carousel-item img {
-  width: 100%;  /* Make image fit the container width */
-  height: 100%;  /* Make image fit the container height */
-  object-fit: contain;  /* Ensure images are fully visible without cropping */
+  width: 100%;
+  height: auto;
 }
-
-.carousel-caption {
-  background-color: rgba(0, 0, 0, 0.5);  /* Optional: Darken caption background for better text visibility */
-  padding: 10px;
-}
-
 
 .form-container {
-  width: 70%;
+  width: 60%;
   max-width: 600px;
+  position: relative;
 }
 
 .form {
@@ -53,18 +66,6 @@
   align-items: flex-start;
   margin: 20px;
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  opacity: 1;
-  transform: scale(1);
-}
-
-.form.hidden {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.form.visible {
-  opacity: 1;
-  transform: scale(1);
 }
 
 .form label {
@@ -81,6 +82,7 @@
   border-radius: 20px;
   border: 1px solid #ccc;
   outline: none;
+  box-sizing: border-box;
 }
 
 .form button {
@@ -105,55 +107,30 @@
   margin: 20px;
   font-size: 20px;
   text-align: left;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  opacity: 0;
-  transform: scale(0.9);
+  animation: fadeIn 0.5s ease-in-out; /* Animation for showing */
 }
 
 .prediction-details.hidden {
-  opacity: 0;
-  transform: scale(0.9);
+  animation: fadeOut 0.5s ease-in-out; /* Animation for hiding */
 }
 
-.prediction-details.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.prediction-details p {
-  font-size: 18px;
-  color: #333;
-}
-
-.prediction-details h2 {
-  font-size: 24px;
-  color: #333;
+.App-footer {
+  background-color: #282c34;
+  padding: 10px;
+  color: white;
   text-align: center;
-  margin-top: 20px;
 }
 
-.prediction-details button {
-  display: block;
-  margin: 20px auto;
+.reset-button {
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
   background-color: #282c34;
   color: white;
   cursor: pointer;
+  margin-top: 20px;
 }
 
-.prediction-details button:hover {
+.reset-button:hover {
   background-color: #61dafb;
-}
-
-.App-footer {
-  background-color: #282c34;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  font-size: 12px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
 }
