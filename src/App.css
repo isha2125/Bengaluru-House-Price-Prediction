@@ -1,0 +1,159 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px;
+  flex: 1;
+  overflow: auto;
+}
+
+.carousel-container {
+  width: 40%;  /* Fixed width for carousel container */
+  max-width: 400px;  /* Optional: Max width for better responsiveness */
+  height: 600px;  /* Fixed height for carousel */
+  margin-right: 20px;
+  overflow: hidden;  /* Hide overflow to ensure images fit properly */
+}
+
+.carousel-item img {
+  width: 100%;  /* Make image fit the container width */
+  height: 100%;  /* Make image fit the container height */
+  object-fit: contain;  /* Ensure images are fully visible without cropping */
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5);  /* Optional: Darken caption background for better text visibility */
+  padding: 10px;
+}
+
+
+.form-container {
+  width: 70%;
+  max-width: 600px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 20px;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.form.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.form.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.form button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #282c34;
+  color: white;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #61dafb;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.prediction-details {
+  margin: 20px;
+  font-size: 20px;
+  text-align: left;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.prediction-details.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.prediction-details.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.prediction-details p {
+  font-size: 18px;
+  color: #333;
+}
+
+.prediction-details h2 {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.prediction-details button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #282c34;
+  color: white;
+  cursor: pointer;
+}
+
+.prediction-details button:hover {
+  background-color: #61dafb;
+}
+
+.App-footer {
+  background-color: #282c34;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
