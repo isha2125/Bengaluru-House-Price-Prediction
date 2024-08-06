@@ -23,24 +23,10 @@
 }
 
 .carousel-container {
-  width: 40%;  /* Fixed width for carousel container */
-  max-width: 400px;  /* Optional: Max width for better responsiveness */
-  height: 600px;  /* Fixed height for carousel */
+  width: 30%;  /* Adjusted width */
+  max-width: 300px;  /* Adjusted max width */
   margin-right: 20px;
-  overflow: hidden;  /* Hide overflow to ensure images fit properly */
 }
-
-.carousel-item img {
-  width: 100%;  /* Make image fit the container width */
-  height: 100%;  /* Make image fit the container height */
-  object-fit: contain;  /* Ensure images are fully visible without cropping */
-}
-
-.carousel-caption {
-  background-color: rgba(0, 0, 0, 0.5);  /* Optional: Darken caption background for better text visibility */
-  padding: 10px;
-}
-
 
 .form-container {
   width: 70%;

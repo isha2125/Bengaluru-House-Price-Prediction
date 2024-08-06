@@ -1,9 +1,35 @@
 services:
+  # Backend service
   - type: web
-    name: bengaluru-house-price-prediction
+    name: bengaluru-house-price-prediction-backend
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn --chdir backend app:app
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.7
+        value: 3.11.9
+
+  # Frontend service
+  - type: web
+    name: bengaluru-house-price-prediction-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/build
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  # API service (optional, if you want to separate API routes)
+  - type: web
+    name: bengaluru-house-price-prediction-api
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn --chdir backend app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: /api/$1
