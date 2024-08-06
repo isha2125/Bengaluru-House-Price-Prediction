@@ -69,7 +69,7 @@ function App() {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://www.surfacesreporter.com/myuploads/15ambara-house-bangalore-surfaces-reporter.jpg"
+                 src="https://www.surfacesreporter.com/myuploads/15ambara-house-bangalore-surfaces-reporter.jpg"
                 alt="House in Bangalore"
               />
               <Carousel.Caption>
@@ -91,7 +91,7 @@ function App() {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://www.ashwinarchitects.com/3/wp-content/uploads/2022/11/bangalore-architects-near-me-100x80-plot-duplex-house-design-front-view-eve.jpg.webp"
+                 src="https://www.ashwinarchitects.com/3/wp-content/uploads/2022/11/bangalore-architects-near-me-100x80-plot-duplex-house-design-front-view-eve.jpg.webp"
                 alt="House in Bangalore"
               />
               <Carousel.Caption>
