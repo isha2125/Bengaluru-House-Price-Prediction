@@ -9,6 +9,9 @@ CORS(app, resources={r"/*": {"origins": "https://bengaluru-house-price-predictio
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Load artifacts when the module is imported
+util.load_saved_artifacts()
+
 @app.route('/')
 def home():
     return "Welcome to the Bengaluru House Price Prediction API"
@@ -46,5 +49,4 @@ def predict_home_price():
 
 if __name__ == "__main__":
     logger.info("Starting Python Flask Server For Home Price Prediction...")
-    util.load_saved_artifacts()
     app.run(debug=True)
