@@ -3,7 +3,7 @@ from flask_cors import CORS
 import util
 
 app = Flask(__name__)
-CORS(app)  # This enables CORS for all routes
+CORS(app, resources={r"/*": {"origins": "https://your-frontend-url.herokuapp.com"}})  # This enables CORS for all routes
 
 @app.route('/')
 def home():
