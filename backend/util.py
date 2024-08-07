@@ -11,14 +11,11 @@ __locations = None
 __data_columns = None
 __model = None
 
-ARTIFACT_DIR = os.environ.get('ARTIFACT_DIR', '.')
-
 def get_estimated_price(location, sqft, bhk, bath):
     try:
         loc_index = __data_columns.index(location.lower())
     except ValueError:
         loc_index = -1
-        logger.warning(f"Location '{location}' not found in data columns")
 
     x = np.zeros(len(__data_columns))
     x[0] = sqft
@@ -39,12 +36,12 @@ def load_saved_artifacts():
     global __model
 
     try:
-        with open(os.path.join(ARTIFACT_DIR, "columns.json"), 'r') as f:
+        with open("./columns.json", 'r') as f:
             __data_columns = json.load(f)['data_columns']
             __locations = __data_columns[3:]
         logger.info(f"Loaded {len(__locations)} locations")
 
-        with open(os.path.join(ARTIFACT_DIR, "Bengaluru House Data.pickle"), 'rb') as f:
+        with open("./Bengaluru House Data.pickle", 'rb') as f:
             __model = pickle.load(f)
         logger.info("Model loaded successfully")
     except FileNotFoundError as e:
