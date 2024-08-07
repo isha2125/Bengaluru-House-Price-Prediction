@@ -1,9 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import util
+import logging
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://bengaluru-house-price-prediction-frontend.onrender.com"}})  # This enables CORS for all routes
+CORS(app, resources={r"/*": {"origins": "https://bengaluru-house-price-prediction-frontend.onrender.com"}})
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @app.route('/')
 def home():
@@ -11,25 +15,35 @@ def home():
 
 @app.route('/get_location_names', methods=['GET'])
 def get_location_names():
-    locations = util.get_location_names()
-    return jsonify({
-        'locations': locations
-    })
+    try:
+        locations = util.get_location_names()
+        logger.info(f"Returning {len(locations)} locations")
+        return jsonify({
+            'locations': locations
+        })
+    except Exception as e:
+        logger.error(f"Error in get_location_names: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
 
 @app.route('/predict_home_price', methods=['POST'])
 def predict_home_price():
-    data = request.json
-    total_sqft = float(data['total_sqft'])
-    location = data['location']
-    bhk = int(data['bhk'])
-    bath = int(data['bath'])
+    try:
+        data = request.json
+        total_sqft = float(data['total_sqft'])
+        location = data['location']
+        bhk = int(data['bhk'])
+        bath = int(data['bath'])
 
-    estimated_price = util.get_estimated_price(location, total_sqft, bhk, bath)
-    return jsonify({
-        'estimated_price': estimated_price
-    })
+        estimated_price = util.get_estimated_price(location, total_sqft, bhk, bath)
+        logger.info(f"Predicted price for {location}: {estimated_price}")
+        return jsonify({
+            'estimated_price': estimated_price
+        })
+    except Exception as e:
+        logger.error(f"Error in predict_home_price: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
 
 if __name__ == "__main__":
-    print("Starting Python Flask Server For Home Price Prediction...")
+    logger.info("Starting Python Flask Server For Home Price Prediction...")
     util.load_saved_artifacts()
     app.run(debug=True)
