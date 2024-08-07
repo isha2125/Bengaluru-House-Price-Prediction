@@ -17,6 +17,8 @@ def home():
 def get_location_names():
     try:
         locations = util.get_location_names()
+        if locations is None:
+            raise ValueError("Locations data is not loaded")
         logger.info(f"Returning {len(locations)} locations")
         return jsonify({
             'locations': locations
@@ -35,7 +37,6 @@ def predict_home_price():
         bath = int(data['bath'])
 
         estimated_price = util.get_estimated_price(location, total_sqft, bhk, bath)
-        logger.info(f"Predicted price for {location}: {estimated_price}")
         return jsonify({
             'estimated_price': estimated_price
         })
