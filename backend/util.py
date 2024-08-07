@@ -1,16 +1,24 @@
 import json
 import pickle
 import numpy as np
+import os
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 __locations = None
 __data_columns = None
 __model = None
 
+ARTIFACT_DIR = os.environ.get('ARTIFACT_DIR', '.')
+
 def get_estimated_price(location, sqft, bhk, bath):
     try:
         loc_index = __data_columns.index(location.lower())
-    except:
+    except ValueError:
         loc_index = -1
+        logger.warning(f"Location '{location}' not found in data columns")
 
     x = np.zeros(len(__data_columns))
     x[0] = sqft
@@ -25,18 +33,28 @@ def get_location_names():
     return __locations
 
 def load_saved_artifacts():
-    print("loading saved artifacts...start")
+    logger.info("Loading saved artifacts...start")
     global __data_columns
     global __locations
     global __model
 
-    with open("./columns.json", 'r') as f:
-        __data_columns = json.load(f)['data_columns']
-        __locations = __data_columns[3:]
+    try:
+        with open(os.path.join(ARTIFACT_DIR, "columns.json"), 'r') as f:
+            __data_columns = json.load(f)['data_columns']
+            __locations = __data_columns[3:]
+        logger.info(f"Loaded {len(__locations)} locations")
 
-    with open("./Bengaluru House Data.pickle", 'rb') as f:
-        __model = pickle.load(f)
-    print("loading saved artifacts...done")
+        with open(os.path.join(ARTIFACT_DIR, "Bengaluru House Data.pickle"), 'rb') as f:
+            __model = pickle.load(f)
+        logger.info("Model loaded successfully")
+    except FileNotFoundError as e:
+        logger.error(f"File not found: {str(e)}")
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON decode error: {str(e)}")
+    except Exception as e:
+        logger.error(f"Error loading artifacts: {str(e)}")
+
+    logger.info("Loading saved artifacts...done")
 
 if __name__ == '__main__':
     load_saved_artifacts()
@@ -45,4 +63,3 @@ if __name__ == '__main__':
     print(get_estimated_price('1st Phase JP Nagar', 1000, 2, 2))
     print(get_estimated_price('Kalhalli', 1000, 2, 2))  # other location
     print(get_estimated_price('Ejipura', 1000, 2, 2))  # other location
-    
