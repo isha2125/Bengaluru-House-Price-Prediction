@@ -160,7 +160,7 @@ function App() {
         </div>
       </div>
       <footer className="App-footer">
-        <p>Made by Aditya</p>
+        <p>Made by Aditya and Isha.</p>
       </footer>
     </div>
   );
